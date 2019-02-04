@@ -1,0 +1,92 @@
+
+<div *ngIf="arr?.length > 0 && arr" class="container">
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{view_avge_general}}</h1>
+    <p class="lead">Promedio de generacion</p>
+  </div>
+</div>
+    <div class="container-fluid" >
+    <br>
+    <h4>Grafica de Calificaciones por alumno</h4>
+    <br>
+    <div style="display: block"> 
+        <canvas  baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"></canvas>
+    </div>
+    <br>
+    <h4>Promedio maximo y minimo</h4>
+    <div class="container">
+            <div class="row">
+    <div class="col-6">
+    <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">{{view_max.points|json}}</h1>
+              <p class="lead">{{view_max.nombre|json}}</p>
+            </div>
+          </div>
+    </div>
+    
+    <div class="col-6">
+          <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">{{view_min.points|json}}</h1>
+                  <p class="lead">{{view_min.nombre|json}}</p>
+                </div>
+              </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <h4>Promedio por grado</h4>
+    <br>
+    <div class="container-fluid" >
+            <canvas baseChart
+                        [datasets]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        [options]="pieChartOption"
+                        [legend]="pieChartLegend"
+           ></canvas>
+          </div>
+</div>
+
+
+
+
+<br>
+<h4>
+    Lsita Alumnos
+</h4>
+<br>
+<div>
+    <div class="container-fluid">
+    <table  class="table table-dark  table-hover table-striped">
+    <thead class="thead-light">
+    <tr>
+    <th>Nombre</th>
+    <th>Apellido Materno</th>
+    <th>Apellido Paterno</th>
+    <th>Grado</th>
+    <th>Grupo</th>
+    <th>Calificacion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of dataexcel">
+        <td> {{data["Nombres"]|json}} </td>
+        <td> {{data["Apellido Materno"]|json}} </td>
+        <td> {{data["Apellido Paterno"]|json}} </td>
+        <td> {{data["Grado"]|json}} </td>
+        <td> {{data["Grupo"]|json}} </td>
+        <td> {{data["Calificacion"]|json}} </td>
+    </tr>
+       </tbody>
+    </table>
+   </div>
+</div>
+</div>
